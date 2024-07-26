@@ -11,6 +11,7 @@
 		494294F42C5341A00027071E /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 494294F32C5341A00027071E /* ContentView.swift */; };
 		494294F62C5341A10027071E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 494294F52C5341A10027071E /* Assets.xcassets */; };
 		494294F92C5341A10027071E /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 494294F82C5341A10027071E /* Preview Assets.xcassets */; };
+		494295012C5344650027071E /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 494295002C5344650027071E /* NetworkManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -20,6 +21,7 @@
 		494294F52C5341A10027071E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		494294F82C5341A10027071E /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		494294FA2C5341A10027071E /* MPD_MenuBar.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = MPD_MenuBar.entitlements; sourceTree = "<group>"; };
+		494295002C5344650027071E /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,6 +56,7 @@
 			children = (
 				494294F12C5341A00027071E /* MPD_MenuBarApp.swift */,
 				494294F32C5341A00027071E /* ContentView.swift */,
+				494295002C5344650027071E /* NetworkManager.swift */,
 				494294F52C5341A10027071E /* Assets.xcassets */,
 				494294FA2C5341A10027071E /* MPD_MenuBar.entitlements */,
 				494294F72C5341A10027071E /* Preview Content */,
@@ -139,6 +142,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				494295012C5344650027071E /* NetworkManager.swift in Sources */,
 				494294F42C5341A00027071E /* ContentView.swift in Sources */,
 				494294F22C5341A00027071E /* MPD_MenuBarApp.swift in Sources */,
 			);
