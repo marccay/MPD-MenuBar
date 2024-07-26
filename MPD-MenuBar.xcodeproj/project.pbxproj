@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		491329852C53494A00D95E37 /* AppMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 491329842C53494A00D95E37 /* AppMenu.swift */; };
 		494294F22C5341A00027071E /* MPD_MenuBarApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 494294F12C5341A00027071E /* MPD_MenuBarApp.swift */; };
 		494294F42C5341A00027071E /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 494294F32C5341A00027071E /* ContentView.swift */; };
 		494294F62C5341A10027071E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 494294F52C5341A10027071E /* Assets.xcassets */; };
@@ -15,6 +16,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		491329842C53494A00D95E37 /* AppMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppMenu.swift; sourceTree = "<group>"; };
 		494294EE2C5341A00027071E /* MPD-MenuBar.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "MPD-MenuBar.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		494294F12C5341A00027071E /* MPD_MenuBarApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MPD_MenuBarApp.swift; sourceTree = "<group>"; };
 		494294F32C5341A00027071E /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -55,6 +57,7 @@
 			isa = PBXGroup;
 			children = (
 				494294F12C5341A00027071E /* MPD_MenuBarApp.swift */,
+				491329842C53494A00D95E37 /* AppMenu.swift */,
 				494294F32C5341A00027071E /* ContentView.swift */,
 				494295002C5344650027071E /* NetworkManager.swift */,
 				494294F52C5341A10027071E /* Assets.xcassets */,
@@ -144,6 +147,7 @@
 			files = (
 				494295012C5344650027071E /* NetworkManager.swift in Sources */,
 				494294F42C5341A00027071E /* ContentView.swift in Sources */,
+				491329852C53494A00D95E37 /* AppMenu.swift in Sources */,
 				494294F22C5341A00027071E /* MPD_MenuBarApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -283,6 +287,7 @@
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_LSUIElement = YES;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -310,6 +315,7 @@
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_LSUIElement = YES;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
