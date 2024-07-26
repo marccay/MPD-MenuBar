@@ -114,12 +114,15 @@ class NetworkManager: ObservableObject {
     func connect() {
         connectToServer()
         receiveData()
-        getInfo()
+        getCurrent()
+        getStatus()
     }
     
     func getInfo() {
-        getCurrent()
-        getStatus()
+        if self.connectionStatus == "Connected" {
+            getCurrent()
+            getStatus()
+        }
     }
     
     func getStatus() {

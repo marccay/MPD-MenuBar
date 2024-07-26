@@ -34,68 +34,70 @@ struct AppMenu: View {
             }
             .padding()
         }
-
-        // Now Playing Info
-        VStack {
-            Text(networkManager.dataMap["Title"] ?? "")
-                .fontWeight(.medium)
-            Text(networkManager.dataMap["Artist"] ?? "")
-                .font(.caption)
-                .fontWeight(.semibold)
-            Text(networkManager.dataMap["Album"] ?? "")
-                .font(.caption2)
-                .multilineTextAlignment(.center)
-        }
-        .padding()
-        .frame(width: 300)
-        .onReceive(timer, perform: { _ in
-            networkManager.getCurrent()
-        })
         
-        // Media Keys
-        HStack {
-            Button {
-                networkManager.previousSong()
-            } label: {
-                Label("Previous Song", systemImage: "backward.end.fill")
-                    .labelStyle(.iconOnly)
+        if networkManager.connectionStatus == "Connected" {
+            // Now Playing Info
+            VStack {
+                Text(networkManager.dataMap["Title"] ?? "")
+                    .fontWeight(.medium)
+                Text(networkManager.dataMap["Artist"] ?? "")
+                    .font(.caption)
+                    .fontWeight(.semibold)
+                Text(networkManager.dataMap["Album"] ?? "")
+                    .font(.caption2)
+                    .multilineTextAlignment(.center)
             }
+            .padding()
+            .frame(width: 300)
+            .onReceive(timer, perform: { _ in
+                networkManager.getCurrent()
+            })
             
-            // Dynamic Play/Pause depending on mpd state
-            if networkManager.dataMap["state"] == "play" {
-                // pause button
+            // Media Keys
+            HStack {
                 Button {
-                    networkManager.pauseSong()
+                    networkManager.previousSong()
                 } label: {
-                    Label("Pause", systemImage: "pause")
+                    Label("Previous Song", systemImage: "backward.end.fill")
                         .labelStyle(.iconOnly)
                 }
-            } else {
-                // play button
+                
+                // Dynamic Play/Pause depending on mpd state
+                if networkManager.dataMap["state"] == "play" {
+                    // pause button
+                    Button {
+                        networkManager.pauseSong()
+                    } label: {
+                        Label("Pause", systemImage: "pause")
+                            .labelStyle(.iconOnly)
+                    }
+                } else {
+                    // play button
+                    Button {
+                        networkManager.playSong()
+                    } label: {
+                        Label("Play/Pause Toggle", systemImage: "play")
+                            .labelStyle(.iconOnly)
+                    }
+                }
+                
                 Button {
-                    networkManager.playSong()
+                    networkManager.stopSong()
                 } label: {
-                    Label("Play/Pause Toggle", systemImage: "play")
+                    Label("Stop", systemImage: "stop")
                         .labelStyle(.iconOnly)
                 }
+                
+                Button {
+                    networkManager.nextSong()
+                } label: {
+                    Label("Next Song", systemImage: "forward.end.fill")
+                        .labelStyle(.iconOnly)
+                }
+                
             }
-            
-            Button {
-                networkManager.stopSong()
-            } label: {
-                Label("Stop", systemImage: "stop")
-                    .labelStyle(.iconOnly)
-            }
-            
-            Button {
-                networkManager.nextSong()
-            } label: {
-                Label("Next Song", systemImage: "forward.end.fill")
-                    .labelStyle(.iconOnly)
-            }
-            
+            .padding()
         }
-        .padding()
     }
 }
 
