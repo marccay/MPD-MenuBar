@@ -70,7 +70,7 @@ class NetworkManager: ObservableObject {
                         if receivedString.hasSuffix("OK\n") {
                             self?.stringToDictionary(data: temp)
                             // Test Point, Print to Terminal
-                            //print(temp)
+                            print(temp)
                         }
                     }
                 }
@@ -157,6 +157,58 @@ class NetworkManager: ObservableObject {
         sendCommand(cmd: "pause\n")
         getInfo()
     }
+    
+    func randomToggle() {
+        if dataMap["random"] == "1" {
+            sendCommand(cmd: "random 0\n")
+        } else {
+            sendCommand(cmd: "random 1\n")
+        }
+        getInfo()
+    }
+    
+    func repeatToggle() {
+        if dataMap["repeat"] == "1" {
+            sendCommand(cmd: "repeat 0\n")
+        } else {
+            sendCommand(cmd: "repeat 1\n")
+        }
+        getInfo()
+    }
+    
+    func singleToggle() {
+        if dataMap["single"] == "1" {
+            sendCommand(cmd: "single oneshot\n")
+        } else if dataMap["single"] == "oneshot" {
+            sendCommand(cmd: "single 0\n")
+        } else {
+            sendCommand(cmd: "single 1\n")
+        }
+        getInfo()
+    }
+    
+    func consumeToggle() {
+        if dataMap["consume"] == "1" {
+            sendCommand(cmd: "consume 0\n")
+        } else {
+            sendCommand(cmd: "consume 1\n")
+        }
+        getInfo()
+    }
+    
+    // mpd 0.24
+    /*
+    func consumeToggle() {
+        if dataMap["consume"] == "1" {
+            sendCommand(cmd: "consume oneshot\n")
+        } else if dataMap["consume"] == "oneshot" {
+            sendCommand(cmd: "consume 0\n")
+        } else {
+            sendCommand(cmd: "consume 1\n")
+        }
+        getInfo()
+    }
+    */
     
     func disconnectFromServer() {
         print("disconnected")

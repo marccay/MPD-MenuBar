@@ -36,8 +36,90 @@ struct AppMenu: View {
         }
         
         if networkManager.connectionStatus == "Connected" {
+            // Tottle Controls
+            HStack {
+                // shuffle toggle
+                if networkManager.dataMap["random"] == "1" {
+                    Button("on", systemImage: "shuffle") {
+                        networkManager.randomToggle()
+                    }
+                    .buttonStyle(.borderedProminent)
+                } else {
+                    Button("off", systemImage: "shuffle") {
+                        networkManager.randomToggle()
+                    }
+                    .buttonStyle(.bordered)
+                }
+                
+                // repeat toggle
+                if networkManager.dataMap["repeat"] == "1" {
+                    Button("on", systemImage: "repeat") {
+                        networkManager.repeatToggle()
+                    }
+                    .buttonStyle(.borderedProminent)
+                } else {
+                    Button("off", systemImage: "repeat") {
+                        networkManager.repeatToggle()
+                    }
+                    .buttonStyle(.bordered)
+                }
+                
+                
+                // single toggle
+                if networkManager.dataMap["single"] == "1" {
+                    Button("on", systemImage: "1.circle") {
+                        networkManager.singleToggle()
+                    }
+                    .buttonStyle(.borderedProminent)
+                } else if networkManager.dataMap["single"] == "oneshot" {
+                    Button("oneshot", systemImage: "1.circle") {
+                        networkManager.singleToggle()
+                    }
+                    .buttonStyle(.borderedProminent)
+                } else {
+                    Button("off", systemImage: "1.circle") {
+                        networkManager.singleToggle()
+                    }
+                }
+                
+                // consume toggle
+                
+                if networkManager.dataMap["consume"] == "1" {
+                    Button("on", systemImage: "circle.badge.minus") {
+                        networkManager.consumeToggle()
+                    }
+                    .buttonStyle(.borderedProminent)
+                } else {
+                    Button("off", systemImage: "circle.badge.minus") {
+                        networkManager.consumeToggle()
+                    }
+                }
+                
+                //** mpd 0.24
+                /*
+                if networkManager.dataMap["consume"] == "1" {
+                    Button("on", systemImage: "circle.badge.minus") {
+                        networkManager.consumeToggle()
+                    }
+                    .buttonStyle(.borderedProminent)
+                } else if networkManager.dataMap["consume"] == "oneshot" {
+                    Button("oneshot", systemImage: "circle.badge.minus") {
+                        networkManager.consumeToggle()
+                    }
+                    .buttonStyle(.borderedProminent)
+                } else {
+                    Button("off", systemImage: "circle.badge.minus") {
+                        networkManager.consumeToggle()
+                    }
+                }
+                */
+                
+            }
+            
             // Now Playing Info
             VStack {
+                //Test
+                //Text(networkManager.dataMap["random"] ?? "test")
                 Text(networkManager.dataMap["Title"] ?? "")
                     .fontWeight(.medium)
                 Text(networkManager.dataMap["Artist"] ?? "")
@@ -50,7 +132,7 @@ struct AppMenu: View {
             .padding()
             .frame(width: 300)
             .onReceive(timer, perform: { _ in
-                networkManager.getCurrent()
+                networkManager.getInfo()
             })
             
             // Media Keys
@@ -60,7 +142,9 @@ struct AppMenu: View {
                 } label: {
                     Label("Previous Song", systemImage: "backward.end.fill")
                         .labelStyle(.iconOnly)
+                        .imageScale(.large)
                 }
+                .buttonStyle(BorderlessButtonStyle())
                 
                 // Dynamic Play/Pause depending on mpd state
                 if networkManager.dataMap["state"] == "play" {
@@ -70,15 +154,19 @@ struct AppMenu: View {
                     } label: {
                         Label("Pause", systemImage: "pause")
                             .labelStyle(.iconOnly)
+                            .imageScale(.large)
                     }
+                    .buttonStyle(BorderlessButtonStyle())
                 } else {
                     // play button
                     Button {
                         networkManager.playSong()
                     } label: {
-                        Label("Play/Pause Toggle", systemImage: "play")
+                        Label("Play/Pause Toggle", systemImage: "play.fill")
                             .labelStyle(.iconOnly)
+                            .imageScale(.large)
                     }
+                    .buttonStyle(BorderlessButtonStyle())
                 }
                 
                 Button {
@@ -86,14 +174,18 @@ struct AppMenu: View {
                 } label: {
                     Label("Stop", systemImage: "stop")
                         .labelStyle(.iconOnly)
+                        .imageScale(.large)
                 }
+                .buttonStyle(BorderlessButtonStyle())
                 
                 Button {
                     networkManager.nextSong()
                 } label: {
                     Label("Next Song", systemImage: "forward.end.fill")
                         .labelStyle(.iconOnly)
+                        .imageScale(.large)
                 }
+                .buttonStyle(BorderlessButtonStyle())
                 
             }
             .padding()
